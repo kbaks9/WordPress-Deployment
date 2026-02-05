@@ -18,15 +18,16 @@ resource "azurerm_resource_group" "resource_group" {
 }
 
 module "compute" {
-  source              = "./modules/compute"
-  location            = azurerm_resource_group.resource_group.location
-  resource_group      = azurerm_resource_group.resource_group.name
-  app_virtual_machine = var.app_virtual_machine
-  network_interface   = var.network_interface
-  subnet_id           = module.network.subnet_id
-  admin_user          = var.admin_user
-  admin_pass          = var.admin_pass
-  ssh_public_key      = "~/.ssh/wordpress_vm.pub"
+  source                 = "./modules/compute"
+  location               = azurerm_resource_group.resource_group.location
+  resource_group         = azurerm_resource_group.resource_group.name
+  app_virtual_machine    = var.app_virtual_machine
+  network_interface_name = var.network_interface_name
+  subnet_id              = module.network.subnet_id
+  admin_user             = var.admin_user
+  admin_pass             = var.admin_pass
+  ssh_public_key         = "~/.ssh/wordpress_vm.pub"
+  public_ip_id           = module.network.public_ip_id
 }
 
 module "network" {
@@ -35,4 +36,14 @@ module "network" {
   resource_group       = azurerm_resource_group.resource_group.name
   virtual_network_name = var.virtual_network_name
   subnet_name          = var.subnet_name
+  public_ip_name       = var.public_ip_name
+}
+
+module "security" {
+  source               = "./modules/security"
+  location             = azurerm_resource_group.resource_group.location
+  resource_group       = azurerm_resource_group.resource_group.name
+  nsg_name             = var.nsg_name
+  network_interface_id = module.compute.network_interface
+  ssh_name             = var.ssh_name
 }
