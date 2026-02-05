@@ -11,20 +11,22 @@ resource "azurerm_network_interface" "network_interface" {
 }
 
 resource "azurerm_linux_virtual_machine" "example" {
-  name                = var.app_virtual_machine
-  resource_group_name = var.resource_group
-  location            = var.location
-  size                = "Standard_F2"
-  admin_username      = var.admin_user
-  admin_password      = var.admin_pass
+  name                            = var.app_virtual_machine
+  resource_group_name             = var.resource_group
+  location                        = var.location
+  size                            = "Standard_F2"
+  admin_username                  = var.admin_user
+  admin_password                  = var.admin_pass
+  disable_password_authentication = true
+
   network_interface_ids = [
     azurerm_network_interface.network_interface.id,
   ]
 
-  # admin_ssh_key {
-  #   username   = "adminuser"
-  #   public_key = file("~/.ssh/id_rsa.pub")
-  # }
+  admin_ssh_key {
+    username   = var.admin_user
+    public_key = file(var.ssh_public_key)
+  }
 
   os_disk {
     caching              = "ReadWrite"
