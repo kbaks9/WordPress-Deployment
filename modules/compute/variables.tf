@@ -8,7 +8,7 @@ variable "location" {
   type        = string
 }
 
-variable "network_interface" {
+variable "network_interface_name" {
   description = "The name of the network interface"
   type        = string
 }
@@ -35,5 +35,10 @@ variable "admin_pass" {
 
 variable "ssh_public_key" {
   description = "The SSH public key"
+  type        = string
+}
+
+variable "public_ip_id" {
+  description = "The ID of the public IP address"
   type        = string
 }
