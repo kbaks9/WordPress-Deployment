@@ -15,3 +15,11 @@ resource "azurerm_subnet" "subnetA" {
     azurerm_virtual_network.app_virtual_network
   ]
 }
+
+resource "azurerm_public_ip" "vm_public_ip" {
+  name                = var.public_ip_name
+  location            = var.location
+  resource_group_name = var.resource_group
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
