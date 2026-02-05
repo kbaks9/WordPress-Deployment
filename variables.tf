@@ -10,7 +10,7 @@ variable "location" {
 
 ### Compute
 
-variable "network_interface" {
+variable "network_interface_name" {
   description = "The name of the network interface"
   type        = string
 }
@@ -44,5 +44,22 @@ variable "subnet_name" {
 
 variable "subscription_id" {
   description = "Azure subscription ID"
+  type        = string
+}
+
+variable "public_ip_name" {
+  description = "The name of the public IP address"
+  type        = string
+}
+
+### Security
+
+variable "nsg_name" {
+  description = "The name of the network security group"
+  type        = string
+}
+
+variable "ssh_name" {
+  description = "The name of the secure shell"
   type        = string
 }
