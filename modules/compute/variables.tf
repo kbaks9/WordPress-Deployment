@@ -32,3 +32,8 @@ variable "admin_pass" {
   description = "The admin password"
   type        = string
 }
+
+variable "ssh_public_key" {
+  description = "The SSH public key"
+  type        = string
+}
