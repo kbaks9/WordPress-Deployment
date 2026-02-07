@@ -28,6 +28,7 @@ module "compute" {
   admin_pass             = var.admin_pass
   ssh_public_key         = "~/.ssh/wordpress_vm.pub"
   public_ip_id           = module.network.public_ip_id
+  appvm_extension        = var.appvm_extension
 }
 
 module "network" {
@@ -46,4 +47,5 @@ module "security" {
   nsg_name             = var.nsg_name
   network_interface_id = module.compute.network_interface
   ssh_name             = var.ssh_name
+  http_name            = var.http_name
 }
