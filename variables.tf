@@ -30,6 +30,12 @@ variable "admin_pass" {
   type        = string
 }
 
+variable "appvm_extension" {
+  description = "The virtual machine extension name"
+  type        = string
+}
+
+
 ##### Network
 
 variable "virtual_network_name" {
@@ -61,5 +67,10 @@ variable "nsg_name" {
 
 variable "ssh_name" {
   description = "The name of the secure shell"
+  type        = string
+}
+
+variable "http_name" {
+  description = "The name of the http protocol rule"
   type        = string
 }
