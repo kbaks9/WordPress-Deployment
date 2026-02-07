@@ -8,12 +8,26 @@ resource "azurerm_network_security_group" "vm_nsg" {
 # SSH rule
 resource "azurerm_network_security_rule" "allow_ssh" {
   name                        = var.ssh_name
-  priority                    = 100
+  priority                    = 110
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
   source_port_range           = "*"
   destination_port_range      = "22"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = var.resource_group
+  network_security_group_name = azurerm_network_security_group.vm_nsg.name
+}
+
+resource "azurerm_network_security_rule" "allow_http" {
+  name                        = var.http_name
+  priority                    = 120
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "80"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = var.resource_group
