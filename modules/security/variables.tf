@@ -14,7 +14,12 @@ variable "nsg_name" {
 }
 
 variable "ssh_name" {
-  description = "The name of the secure shell"
+  description = "The name of the secure shell rule"
+  type        = string
+}
+
+variable "http_name" {
+  description = "The name of the http protocol rule"
   type        = string
 }
 
