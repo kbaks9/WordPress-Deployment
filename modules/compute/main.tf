@@ -41,3 +41,22 @@ resource "azurerm_linux_virtual_machine" "vm_linux" {
     version   = "latest"
   }
 }
+
+data "local_file" "wordpress_script" {
+  filename = "${path.root}/script/wordpress.sh"
+}
+
+# Allows custom scripts
+resource "azurerm_virtual_machine_extension" "vm_extension" {
+  name                 = var.appvm_extension
+  virtual_machine_id   = azurerm_linux_virtual_machine.vm_linux.id
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.1"
+
+  protected_settings = <<PROT
+ {
+  "script": "${base64encode(data.local_file.wordpress_script.content)}"
+ }
+PROT
+}
