@@ -42,3 +42,8 @@ variable "public_ip_id" {
   description = "The ID of the public IP address"
   type        = string
 }
+
+variable "appvm_extension" {
+  description = "The virtual machine extension name"
+  type        = string
+}
