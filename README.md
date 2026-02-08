@@ -5,12 +5,45 @@ A startup shell script is executed at first boot (via cloud-init) to install Wor
 
 ---
 
-## 🧱 Architecture Overview
+## Architecture Overview
 
 - Azure Linux Virtual Machine
 - Network Security Group allowing SSH & HTTP access
 - Startup shell script executed at VM boot time to install WordPress and dependencies
 - Infrastructure provisioned using Terraform
+
+---
+
+## Project Structure
+
+```text
+.
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── terraform.tfvars
+├── .gitignore
+├── modules/
+│   ├── compute/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── network/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   └── security/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+├── script/
+│   └── wordpress.sh
+├── images/
+│    ├── custom-script-extension-succeeded.png
+│    ├── wordpress-running.png
+│    ├── wordpress-installation.png
+│    └── bootstrap-log.png
+└── README.md
 
 ---
 
@@ -22,7 +55,7 @@ A startup shell script is executed at first boot (via cloud-init) to install Wor
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Sensitive values are **not committed** to source control.
 
@@ -38,7 +71,7 @@ Also within `script/wordpress.sh` you can change the database new, user, and pas
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 1. Clone the repository
 2. Create `terraform.tfvars` with the required values
@@ -56,9 +89,28 @@ Also within `script/wordpress.sh` you can change the database new, user, and pas
    terraform apply main.tfplan
    ```
 6. Copy the output public IP address into a url to access installation page.
+
 ---
 
-## 🔐 Access
+## Deployment Evidence
+
+The following screenshots demonstrate successful provisioning, automated first-boot configuration, and application availability.
+
+**Azure Custom Script Extension – Successful Execution**  
+![Custom Script Extension](images/custom-script-extension-succeeded.png)
+
+**WordPress Application Installation Page via Public IP**
+![WordPress Installation](images/wordpress-installation.png)
+
+**WordPress Application Accessible via Public IP**  
+![WordPress Running](images/wordpress-running.png)
+
+**First-Boot Automation Log Output**  
+![Bootstrap Log](images/bootstrap-log.png)
+
+---
+
+## Access
 
 Once deployment completes, you can SSH into the virtual machine using the admin credentials defined in `terraform.tfvars`.
 
