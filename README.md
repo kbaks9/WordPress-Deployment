@@ -97,16 +97,13 @@ Also within `script/wordpress.sh` you can change the database new, user, and pas
 
 The following screenshots demonstrate successful provisioning, automated first-boot configuration, and application availability.
 
-**Azure Custom Script Extension – Successful Execution**  
+**1. Azure Custom Script Extension – Successful Execution:**  
 ![Custom Script Extension](images/custom-script-extension-succeeded.png)
 
-**WordPress Application Installation Page via Public IP**
-![WordPress Installation](images/wordpress-installation.png)
-
-**WordPress Application Accessible via Public IP**  
+**2. WordPress Application Accessible via Public IP:**  
 ![WordPress Running](images/wordpress-running.png)
 
-**First-Boot Automation Log Output**  
+**3. First-Boot Automation Log Output:**  
 ![Bootstrap Log](images/bootstrap-log.png)
 
 ---
