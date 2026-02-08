@@ -16,7 +16,7 @@ A startup shell script is executed at first boot (via cloud-init) to install Wor
 
 ## Project Structure
 
-```text
+```
 .
 ├── main.tf
 ├── variables.tf
@@ -44,6 +44,7 @@ A startup shell script is executed at first boot (via cloud-init) to install Wor
 │    ├── wordpress-installation.png
 │    └── bootstrap-log.png
 └── README.md
+```
 
 ---
 
