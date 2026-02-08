@@ -8,7 +8,7 @@ A startup shell script is executed at first boot (via cloud-init) to install Wor
 ## 🧱 Architecture Overview
 
 - Azure Linux Virtual Machine
-- Network Security Group allowing SSH access
+- Network Security Group allowing SSH & HTTP access
 - Startup shell script executed at VM boot time to install WordPress and dependencies
 - Infrastructure provisioned using Terraform
 
@@ -34,6 +34,7 @@ subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 admin_username  = "azureuser"
 admin_password  = "strong-password"
 ```
+Also within `script/wordpress.sh` you can change the database new, user, and pass to what you like.
 
 ---
 
@@ -54,7 +55,7 @@ admin_password  = "strong-password"
    ```bash
    terraform apply main.tfplan
    ```
-
+6. Copy the output public IP address into a url to access installation page.
 ---
 
 ## 🔐 Access
