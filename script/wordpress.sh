@@ -17,9 +17,9 @@ echo "BOOTSTRAP STARTED at $(date)"
 # Name of the WordPress database.
 # Database user that WordPress will authenticate as.
 # Database password (acceptable for labs; use a secrets manager in production).
-DB_NAME="wordpress"
-DB_USER="wpuser"
-DB_PASS="easypass333"
+DB_NAME="wordpress"         ### Change it to what you like
+DB_USER="wpuser"            ### Change it to what you like
+DB_PASS="easypass333"       ### Change it to what you like
 
 # -------------------------
 # System preparation
